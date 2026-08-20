@@ -1,11 +1,31 @@
-<script setup lang="ts"></script>
+<script setup>
+import TheNavbar from './components/TheNavbar.vue'
+import HeroSection from './components/HeroSection.vue'
+import CultureGrid from './components/CultureGrid.vue'
+import TheFooter from './components/TheFooter.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div id="top" class="app-wrapper">
+    <TheNavbar />
+    <main>
+      <HeroSection />
+      <CultureGrid />
+    </main>
+    <TheFooter />
+  </div>
 </template>
 
-<style scoped></style>
+<style>
+@import './style.css';
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+</style>
