@@ -1,15 +1,19 @@
 <script setup>
 const navLinks = [
-  { label: 'Pilares', href: '#pilares' },
-  { label: 'Manifestações', href: '#manifestacoes' },
-  { label: 'Contato', href: '#contato' }
+  { label: 'Visão Geral', href: '#metricas' },
+  { label: 'Pilares Culturais', href: '#pilares' },
+  { label: 'Regiões', href: '#regioes' },
+  { label: 'Newsletter', href: '#newsletter' }
 ]
 </script>
 
 <template>
   <header class="navbar">
     <div class="container nav-content">
-      <div class="logo">Brasil<span>.lab</span></div>
+      <a href="#top" class="logo">
+        <span class="flag-dot"></span>
+        Brasil<span>.lab</span>
+      </a>
       <nav>
         <ul class="nav-list">
           <li v-for="link in navLinks" :key="link.href">
@@ -25,11 +29,11 @@ const navLinks = [
 .navbar {
   position: sticky;
   top: 0;
-  backdrop-filter: blur(12px);
-  background: rgba(10, 10, 12, 0.8);
+  backdrop-filter: blur(16px);
+  background: rgba(7, 13, 10, 0.85);
   border-bottom: 1px solid var(--border);
   z-index: 100;
-  padding: 1rem 0;
+  padding: 1.1rem 0;
 }
 
 .nav-content {
@@ -39,13 +43,26 @@ const navLinks = [
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.25rem;
   font-weight: 700;
+  text-decoration: none;
+  color: var(--text-main);
   letter-spacing: -0.5px;
 }
 
+.flag-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brazil-green);
+  box-shadow: 0 0 10px var(--brazil-green);
+}
+
 .logo span {
-  color: var(--accent);
+  color: var(--brazil-yellow);
 }
 
 .nav-list {
@@ -58,10 +75,17 @@ const navLinks = [
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.9rem;
+  font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .nav-list a:hover {
-  color: var(--text-main);
+  color: var(--brazil-green);
+}
+
+@media (max-width: 768px) {
+  .nav-list {
+    display: none;
+  }
 }
 </style>

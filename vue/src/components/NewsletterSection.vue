@@ -13,75 +13,80 @@ const handleSubmit = () => {
 </script>
 
 <template>
-  <section class="container newsletter">
+  <section id="newsletter" class="container newsletter">
     <div class="box">
-      <h3>Receba Curiosidades Culturais</h3>
-      <p>Uma pílula semanal sobre a história, gastronomia e ritmos do Brasil.</p>
+      <h3>Conheça novas narrativas brasileiras</h3>
+      <p>Receba semanalmente ensaios sobre música, tradições e patrimônio cultural.</p>
       
       <form v-if="!submitted" @submit.prevent="handleSubmit" class="form">
         <input 
           v-model="email" 
           type="email" 
-          placeholder="Seu melhor e-mail" 
+          placeholder="Digite seu e-mail" 
           required 
         />
         <button type="submit">Inscrever</button>
       </form>
-      <p v-else class="success-msg">✓ Inscrição confirmada!</p>
+      <p v-else class="success-msg">✓ Obrigado por se conectar com a cultura!</p>
     </div>
   </section>
 </template>
 
 <style scoped>
 .newsletter {
-  padding: 2rem 1.5rem;
+  padding: 4rem 1.5rem 2rem;
 }
 .box {
-  background: var(--bg-card);
+  background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(14, 26, 20, 0.4) 100%);
   border: 1px solid var(--border);
-  padding: 2.5rem;
-  border-radius: 12px;
+  padding: 3.5rem 2rem;
+  border-radius: 16px;
   text-align: center;
 }
 .box h3 {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  letter-spacing: -0.5px;
   margin-bottom: 0.5rem;
 }
 .box p {
   color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
 }
 .form {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  max-width: 420px;
+  max-width: 440px;
   margin: 0 auto;
 }
 input {
   flex: 1;
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1rem;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
   color: var(--text-main);
   outline: none;
 }
 input:focus {
-  border-color: var(--accent);
+  border-color: var(--brazil-green);
 }
 button {
-  background: var(--accent);
-  color: #000;
-  font-weight: 600;
+  background: var(--brazil-green);
+  color: #041a0f;
+  font-weight: 700;
   border: none;
-  padding: 0.75rem 1.25rem;
+  padding: 0.85rem 1.4rem;
   border-radius: 8px;
   cursor: pointer;
+  transition: opacity 0.2s;
+}
+button:hover {
+  opacity: 0.9;
 }
 .success-msg {
-  color: var(--accent) !important;
+  color: var(--brazil-green) !important;
   font-weight: 600;
 }
 </style>

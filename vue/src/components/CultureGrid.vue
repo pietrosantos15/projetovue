@@ -1,14 +1,38 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const categories = ['Todos', 'Música', 'Gastronomia', 'Folclore', 'Arte']
+const categories = ['Todos', 'Música', 'Gastronomia', 'Folclore', 'Arte & Literatura']
 const selectedCategory = ref('Todos')
 
 const items = [
-  { id: 1, category: 'Música', title: 'Maracatu e Samba', desc: 'Pulsação rítmica ancestral presente do litoral nordestino ao coração do sudeste.' },
-  { id: 2, category: 'Gastronomia', title: 'Saberes & Sabores', desc: 'Tucupi, dendê, queijo da canastra e a fusão de saberes indígenas, africanos e europeus.' },
-  { id: 3, category: 'Folclore', title: 'Bumba Meu Boi', desc: 'Teatro popular, devoção e poesia celebrados em festivais no Maranhão e Amazonas.' },
-  { id: 4, category: 'Arte', title: 'Literatura de Cordel', desc: 'Xilogravuras e métricas orais preservando a crônica viva da realidade popular.' }
+  { 
+    id: 1, 
+    category: 'Música', 
+    title: 'Samba, Bossa & Ritmos', 
+    desc: 'Do cavaquinho de terreiro ao fraseado suave da Bossa Nova, uma revolução rítmica reconhecida mundialmente.',
+    colorTag: 'var(--brazil-green)'
+  },
+  { 
+    id: 2, 
+    category: 'Gastronomia', 
+    title: 'Saberes & Ingredientes Nativos', 
+    desc: 'Tucupi, mandioca, dendê e feijoadas. A união de técnicas indígenas, africanas e ibéricas.',
+    colorTag: 'var(--brazil-yellow)'
+  },
+  { 
+    id: 3, 
+    category: 'Folclore', 
+    title: 'Festivais & Tradições Populares', 
+    desc: 'Bumba Meu Boi, Maracatu Nação e o Frevo: cortejos de resistência, fé e celebração coletiva.',
+    colorTag: 'var(--brazil-blue)'
+  },
+  { 
+    id: 4, 
+    category: 'Arte & Literatura', 
+    title: 'Cordel & Xilogravura', 
+    desc: 'A métrica precisa da rima nordestina ilustrada em talha de madeira, documentando causos do povo.',
+    colorTag: 'var(--brazil-green)'
+  }
 ]
 
 const filteredItems = computed(() => {
@@ -19,6 +43,11 @@ const filteredItems = computed(() => {
 
 <template>
   <section id="pilares" class="container grid-section">
+    <div class="section-header">
+      <h2>Pilares de Expressão</h2>
+      <p>As matrizes que constroem nossa identidade coletiva.</p>
+    </div>
+
     <div class="filter-bar">
       <button 
         v-for="cat in categories" 
@@ -32,7 +61,7 @@ const filteredItems = computed(() => {
 
     <div class="cards-grid">
       <div v-for="item in filteredItems" :key="item.id" class="card">
-        <span class="card-tag">{{ item.category }}</span>
+        <span class="card-tag" :style="{ color: item.colorTag }">{{ item.category }}</span>
         <h3>{{ item.title }}</h3>
         <p>{{ item.desc }}</p>
       </div>
@@ -42,7 +71,23 @@ const filteredItems = computed(() => {
 
 <style scoped>
 .grid-section {
-  padding: 3rem 1.5rem 5rem;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
 }
 
 .filter-bar {
@@ -54,32 +99,34 @@ const filteredItems = computed(() => {
 }
 
 .filter-bar button {
-  background: var(--bg-card);
+  background: var(--bg-surface);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.85rem;
-  transition: all 0.2s;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .filter-bar button.active, .filter-bar button:hover {
   color: var(--text-main);
-  border-color: var(--accent);
+  border-color: var(--brazil-green);
+  background: rgba(0, 223, 129, 0.05);
 }
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  padding: 1.75rem;
-  border-radius: 12px;
+  padding: 2rem;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -91,18 +138,22 @@ const filteredItems = computed(() => {
 }
 
 .card-tag {
-  font-size: 0.75rem;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.3px;
 }
 
 .card p {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 </style>

@@ -2,6 +2,8 @@
 import TheNavbar from './components/TheNavbar.vue'
 import HeroSection from './components/HeroSection.vue'
 import CultureGrid from './components/CultureGrid.vue'
+import RegionsSection from './components/RegionsSection.vue'
+import NewsletterSection from './components/NewsletterSection.vue'
 import TheFooter from './components/TheFooter.vue'
 </script>
 
@@ -11,6 +13,8 @@ import TheFooter from './components/TheFooter.vue'
     <main>
       <HeroSection />
       <CultureGrid />
+      <RegionsSection />
+      <NewsletterSection />
     </main>
     <TheFooter />
   </div>
