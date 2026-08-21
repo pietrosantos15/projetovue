@@ -2,12 +2,9 @@
   --bg-primary: #070d0a;
   --bg-surface: #0e1a14;
   --bg-card: rgba(255, 255, 255, 0.04);
-  
-  /* Cores temáticas Brasil (Clean & Modern) */
   --brazil-green: #00df81;
   --brazil-yellow: #facc15;
   --brazil-blue: #38bdf8;
-  
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --border: rgba(255, 255, 255, 0.08);
@@ -30,7 +27,6 @@ body {
   font-family: var(--font);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 .container {
@@ -39,9 +35,336 @@ body {
   padding: 0 1.5rem;
 }
 
-/* Utilitário para títulos em gradiente */
 .gradient-text {
   background: linear-gradient(135deg, var(--brazil-green) 0%, var(--brazil-yellow) 50%, var(--brazil-blue) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(16px);
+  background: rgba(7, 13, 10, 0.85);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 1.1rem 0;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.flag-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brazil-green);
+  box-shadow: 0 0 10px var(--brazil-green);
+}
+
+.logo span {
+  color: var(--brazil-yellow);
+}
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-list a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.nav-list a:hover {
+  color: var(--brazil-green);
+}
+
+/* Hero */
+.hero {
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(0, 223, 129, 0.08);
+  border: 1px solid rgba(0, 223, 129, 0.25);
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  color: var(--brazil-green);
+  margin-bottom: 2rem;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--brazil-green);
+  border-radius: 50%;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  max-width: 900px;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  max-width: 640px;
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 4.5rem;
+}
+
+.btn-primary {
+  background-color: var(--brazil-green);
+  color: #041a0f;
+  font-weight: 600;
+  padding: 0.85rem 1.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-weight: 500;
+  padding: 0.85rem 1.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.stats-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 850px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 1.75rem 1rem;
+  border-radius: 16px;
+}
+
+.stat-item h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--brazil-yellow);
+}
+
+.stat-item p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+/* Sections */
+.grid-section, .regions-section {
+  padding: 4rem 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  letter-spacing: -0.5px;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-bar button {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.2s;
+}
+
+.filter-bar button.active, .filter-bar button:hover {
+  color: var(--text-main);
+  border-color: var(--brazil-green);
+  background: rgba(0, 223, 129, 0.05);
+}
+
+.cards-grid, .regions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card, .region-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  border-radius: 14px;
+  transition: 0.2s;
+}
+
+.card:hover, .region-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brazil-yellow);
+}
+
+.card-tag, .region-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.region-name {
+  color: var(--brazil-blue);
+}
+
+.card h3, .region-card h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card p, .region-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Newsletter */
+.newsletter {
+  padding: 3rem 1.5rem;
+}
+
+.box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 3.5rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.box p {
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+input {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--brazil-green);
+}
+
+button[type="submit"] {
+  background: var(--brazil-green);
+  color: #041a0f;
+  font-weight: 700;
+  border: none;
+  padding: 0.85rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.success-msg {
+  color: var(--brazil-green) !important;
+  font-weight: 600;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0;
+  margin-top: 3rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-link {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--brazil-green);
 }

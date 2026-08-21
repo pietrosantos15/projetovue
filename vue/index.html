@@ -1,13 +1,142 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brasil.lab — Cultura Brasileira</title>
+  <link rel="stylesheet" href="./src/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="container nav-content">
+        <a href="#top" class="logo">
+          <span class="flag-dot"></span>
+          Brasil<span>.lab</span>
+        </a>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="#metricas">Visão Geral</a></li>
+            <li><a href="#pilares">Pilares Culturais</a></li>
+            <li><a href="#regioes">Regiões</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="top" class="hero container">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Patrimônio Cultural Vivo
+        </div>
+        
+        <h1>A força vibrante e a identidade da <span class="gradient-text">cultura brasileira</span>.</h1>
+        
+        <p class="subtitle">
+          Das raízes sonoras do samba e maracatu à literatura de cordel e gastronomia ancestral. Explore a pluralidade de um país moldado pela diversidade e criatividade.
+        </p>
+
+        <div class="actions">
+          <a href="#pilares" class="btn-primary">Conhecer os Pilares</a>
+          <a href="#regioes" class="btn-secondary">Mapeamento Regional</a>
+        </div>
+
+        <div id="metricas" class="stats-bar">
+          <div class="stat-item">
+            <h3>+300</h3>
+            <p>Povos Indígenas e Tradições</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <h3>5 Regiões</h3>
+            <p>Identidades Únicas</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <h3>Centenas</h3>
+            <p>Gêneros Musicais Nativos</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pilares Section -->
+      <section id="pilares" class="container grid-section">
+        <div class="section-header">
+          <h2>Pilares de Expressão</h2>
+          <p>As matrizes que constroem nossa identidade coletiva.</p>
+        </div>
+
+        <div class="filter-bar">
+          <button 
+            v-for="cat in categories" 
+            :key="cat"
+            :class="{ active: selectedCategory === cat }"
+            @click="selectedCategory = cat"
+          >
+            {{ cat }}
+          </button>
+        </div>
+
+        <div class="cards-grid">
+          <div v-for="item in filteredItems" :key="item.id" class="card">
+            <span class="card-tag" :style="{ color: item.colorTag }">{{ item.category }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.desc }}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Regiões Section -->
+      <section id="regioes" class="container regions-section">
+        <div class="section-header">
+          <h2>Mosaico Regional</h2>
+          <p>Um continente com cinco universos singulares.</p>
+        </div>
+
+        <div class="regions-grid">
+          <div v-for="r in regions" :key="r.name" class="region-card">
+            <span class="region-name">{{ r.name }}</span>
+            <h4>{{ r.highlight }}</h4>
+            <p>{{ r.detail }}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Section -->
+      <section id="newsletter" class="container newsletter">
+        <div class="box">
+          <h3>Conheça novas narrativas brasileiras</h3>
+          <p>Receba ensaios sobre música, tradições e patrimônio cultural.</p>
+          
+          <form v-if="!submitted" @submit.prevent="handleSubmit" class="form">
+            <input v-model="email" type="email" placeholder="Digite seu e-mail" required />
+            <button type="submit">Inscrever</button>
+          </form>
+          <p v-else class="success-msg">✓ Inscrição confirmada com sucesso!</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© 2026 Brasil.lab — Celebrando a diversidade cultural.</p>
+        <a href="#top" class="footer-link">Voltar ao topo ↑</a>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
 </html>
